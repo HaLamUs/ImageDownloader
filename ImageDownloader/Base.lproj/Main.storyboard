@@ -1,14 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4k0-0X-SVU">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--FILE-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="DownloadViewController" customModule="ImageDownloader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +17,82 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="4" translatesAutoresizingMaskIntoConstraints="NO" id="Hob-Aa-Rxr"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lz0-LH-WuC">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usT-Ju-lHJ" userLabel="MinLabel">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBE-Oo-tiV" userLabel="MaxLabel">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Lz0-LH-WuC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="4Fl-6o-ioU"/>
+                            <constraint firstItem="Hob-Aa-Rxr" firstAttribute="leading" secondItem="usT-Ju-lHJ" secondAttribute="trailing" constant="20" id="Ez2-bE-pqO"/>
+                            <constraint firstItem="Lz0-LH-WuC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Jlh-Kp-8PP"/>
+                            <constraint firstAttribute="trailing" secondItem="Lz0-LH-WuC" secondAttribute="trailing" id="NV1-UO-Ruh"/>
+                            <constraint firstItem="Hob-Aa-Rxr" firstAttribute="top" secondItem="Lz0-LH-WuC" secondAttribute="bottom" constant="5" id="P7V-Lh-d25"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="aBE-Oo-tiV" secondAttribute="bottom" constant="5" id="Vhx-gi-fKe"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="usT-Ju-lHJ" secondAttribute="bottom" constant="5" id="Wof-p3-ODn"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Hob-Aa-Rxr" secondAttribute="bottom" id="eNW-Fy-91V"/>
+                            <constraint firstAttribute="trailing" secondItem="aBE-Oo-tiV" secondAttribute="trailing" constant="20" id="meA-eJ-5vc"/>
+                            <constraint firstItem="usT-Ju-lHJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="s2m-4J-05E"/>
+                            <constraint firstItem="aBE-Oo-tiV" firstAttribute="leading" secondItem="Hob-Aa-Rxr" secondAttribute="trailing" constant="20" id="stg-fE-tZF"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="FILE" id="jZU-Vm-Fbk">
+                        <leftBarButtonItems>
+                            <barButtonItem title="Reset" id="J4Q-Re-lvn">
+                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="touchUpResetButton:" destination="BYZ-38-t0r" id="Knt-Vp-lbd"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Add" id="XOk-yY-iUj">
+                                <connections>
+                                    <action selector="touchUpAddButton:" destination="BYZ-38-t0r" id="fbw-xK-PJT"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Pause" id="gVn-2m-OZh"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="downLoadTableView" destination="Lz0-LH-WuC" id="zWl-ja-seU"/>
+                        <outlet property="maxLabel" destination="aBE-Oo-tiV" id="ugQ-6p-hdA"/>
+                        <outlet property="minLabel" destination="usT-Ju-lHJ" id="3UR-Oa-TMz"/>
+                        <outlet property="operationQueue" destination="Hob-Aa-Rxr" id="o4S-KP-Gjp"/>
+                        <outlet property="pauseButton" destination="gVn-2m-OZh" id="4qv-IS-thN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="752.79999999999995" y="-646.32683658170924"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="U1T-06-AVN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4k0-0X-SVU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X1V-1m-tFi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="9A3-p0-UEZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zff-EW-Oeh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="24.800000000000001" y="-646.32683658170924"/>
         </scene>
     </scenes>
 </document>

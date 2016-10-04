@@ -7,17 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB99F5A31DA4148D00E82BB3 /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99F5A21DA4148D00E82BB3 /* DownloadViewController.swift */; };
+		EB99F5A61DA419BB00E82BB3 /* DownloadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99F5A41DA419BB00E82BB3 /* DownloadTableViewCell.swift */; };
+		EB99F5A71DA419BB00E82BB3 /* DownloadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB99F5A51DA419BB00E82BB3 /* DownloadTableViewCell.xib */; };
+		EB99F5AA1DA41D4C00E82BB3 /* LHNetWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99F5A91DA41D4C00E82BB3 /* LHNetWork.swift */; };
 		EBBDB4211DA4138400CFE064 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBDB4201DA4138400CFE064 /* AppDelegate.swift */; };
-		EBBDB4231DA4138400CFE064 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBDB4221DA4138400CFE064 /* ViewController.swift */; };
 		EBBDB4261DA4138400CFE064 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBBDB4241DA4138400CFE064 /* Main.storyboard */; };
 		EBBDB4281DA4138400CFE064 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBBDB4271DA4138400CFE064 /* Assets.xcassets */; };
 		EBBDB42B1DA4138400CFE064 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBBDB4291DA4138400CFE064 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB99F5A21DA4148D00E82BB3 /* DownloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
+		EB99F5A41DA419BB00E82BB3 /* DownloadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTableViewCell.swift; sourceTree = "<group>"; };
+		EB99F5A51DA419BB00E82BB3 /* DownloadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadTableViewCell.xib; sourceTree = "<group>"; };
+		EB99F5A91DA41D4C00E82BB3 /* LHNetWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHNetWork.swift; sourceTree = "<group>"; };
 		EBBDB41D1DA4138400CFE064 /* ImageDownloader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageDownloader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBBDB4201DA4138400CFE064 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EBBDB4221DA4138400CFE064 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EBBDB4251DA4138400CFE064 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBBDB4271DA4138400CFE064 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBBDB42A1DA4138400CFE064 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -35,6 +41,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB99F5A81DA41B1100E82BB3 /* Screen1 */ = {
+			isa = PBXGroup;
+			children = (
+				EB99F5A21DA4148D00E82BB3 /* DownloadViewController.swift */,
+				EB99F5A41DA419BB00E82BB3 /* DownloadTableViewCell.swift */,
+				EB99F5A51DA419BB00E82BB3 /* DownloadTableViewCell.xib */,
+			);
+			name = Screen1;
+			sourceTree = "<group>";
+		};
 		EBBDB4141DA4138400CFE064 = {
 			isa = PBXGroup;
 			children = (
@@ -55,11 +71,12 @@
 			isa = PBXGroup;
 			children = (
 				EBBDB4201DA4138400CFE064 /* AppDelegate.swift */,
-				EBBDB4221DA4138400CFE064 /* ViewController.swift */,
-				EBBDB4241DA4138400CFE064 /* Main.storyboard */,
 				EBBDB4271DA4138400CFE064 /* Assets.xcassets */,
 				EBBDB4291DA4138400CFE064 /* LaunchScreen.storyboard */,
 				EBBDB42C1DA4138400CFE064 /* Info.plist */,
+				EBBDB4241DA4138400CFE064 /* Main.storyboard */,
+				EB99F5A81DA41B1100E82BB3 /* Screen1 */,
+				EB99F5A91DA41D4C00E82BB3 /* LHNetWork.swift */,
 			);
 			path = ImageDownloader;
 			sourceTree = "<group>";
@@ -96,7 +113,7 @@
 				TargetAttributes = {
 					EBBDB41C1DA4138400CFE064 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = XM9E7773FZ;
+						DevelopmentTeam = LR8XGHFLF8;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -125,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBBDB42B1DA4138400CFE064 /* LaunchScreen.storyboard in Resources */,
+				EB99F5A71DA419BB00E82BB3 /* DownloadTableViewCell.xib in Resources */,
 				EBBDB4281DA4138400CFE064 /* Assets.xcassets in Resources */,
 				EBBDB4261DA4138400CFE064 /* Main.storyboard in Resources */,
 			);
@@ -137,8 +155,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBBDB4231DA4138400CFE064 /* ViewController.swift in Sources */,
+				EB99F5AA1DA41D4C00E82BB3 /* LHNetWork.swift in Sources */,
+				EB99F5A31DA4148D00E82BB3 /* DownloadViewController.swift in Sources */,
 				EBBDB4211DA4138400CFE064 /* AppDelegate.swift in Sources */,
+				EB99F5A61DA419BB00E82BB3 /* DownloadTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,12 +281,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = XM9E7773FZ;
+				DEVELOPMENT_TEAM = LR8XGHFLF8;
 				INFOPLIST_FILE = ImageDownloader/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = htk.dev.ImageDownloader;
+				PRODUCT_BUNDLE_IDENTIFIER = lam.dev.ImageDownloader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -274,12 +296,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = XM9E7773FZ;
+				DEVELOPMENT_TEAM = LR8XGHFLF8;
 				INFOPLIST_FILE = ImageDownloader/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = htk.dev.ImageDownloader;
+				PRODUCT_BUNDLE_IDENTIFIER = lam.dev.ImageDownloader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -302,6 +326,7 @@
 				EBBDB4311DA4138400CFE064 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
