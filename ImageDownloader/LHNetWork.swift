@@ -8,31 +8,46 @@
 
 import Foundation
 
-enum Result{
-    case success(AnyObject?)
-    case failure(Error?)
+/*
+ This protocol to infor download zip file finshed
+ */
+protocol LHDownloadDelegate:class {
+    func downLoadDidFinish()
 }
 
-class LHNetWork:NSObject, URLSessionDownloadDelegate {
+/*
+ This class use for download zip file
+ */
+class LHNetWork: NSObject {
     
+    //MARK: Property
     var url:URL?
+    weak var delegate: LHDownloadDelegate?
     
+    //func: Init
+    required init(_ url:String, _ delegate: LHDownloadDelegate) {
+        let request = URL(string: url)
+        self.url = request
+        self.delegate = delegate
+    }
+    
+    //func: Download
+    func downloadDropBox(){
+        let config = URLSessionConfiguration.background(withIdentifier: "something")
+        let session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
+        let task = session.downloadTask(with: url!)
+        task.resume()
+    }
+}
+
+extension LHNetWork: URLSessionDownloadDelegate {
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         let localUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
         let destUrl = localUrl?.appendingPathComponent(url!.lastPathComponent)
         let dataFromUrl = try! Data(contentsOf: location)
         _ = try! dataFromUrl.write(to: destUrl!)
+        self.delegate?.downLoadDidFinish()
     }
-    
-    func download(_ url: String){
-        let request = URL(string: url)
-        self.url = request
-        let config = URLSessionConfiguration.background(withIdentifier: "something")
-        let session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
-        let task = session.downloadTask(with: request!)
-        task.resume()
-    }
-    
 }
 
         

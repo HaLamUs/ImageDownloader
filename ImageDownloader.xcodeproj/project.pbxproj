@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CDD344B8A5E2CB09F99D5223 /* Pods_ImageDownloader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C820651DD9077F109637B43 /* Pods_ImageDownloader.framework */; };
 		EB99F5A31DA4148D00E82BB3 /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99F5A21DA4148D00E82BB3 /* DownloadViewController.swift */; };
 		EB99F5A61DA419BB00E82BB3 /* DownloadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99F5A41DA419BB00E82BB3 /* DownloadTableViewCell.swift */; };
 		EB99F5A71DA419BB00E82BB3 /* DownloadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB99F5A51DA419BB00E82BB3 /* DownloadTableViewCell.xib */; };
 		EB99F5AA1DA41D4C00E82BB3 /* LHNetWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99F5A91DA41D4C00E82BB3 /* LHNetWork.swift */; };
+		EB99F5AC1DA4343E00E82BB3 /* LHManagerZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99F5AB1DA4343E00E82BB3 /* LHManagerZip.swift */; };
 		EBBDB4211DA4138400CFE064 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBDB4201DA4138400CFE064 /* AppDelegate.swift */; };
 		EBBDB4261DA4138400CFE064 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBBDB4241DA4138400CFE064 /* Main.storyboard */; };
 		EBBDB4281DA4138400CFE064 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBBDB4271DA4138400CFE064 /* Assets.xcassets */; };
@@ -18,10 +20,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		012D7267B5AD9D9BC6902EAC /* Pods-ImageDownloader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageDownloader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImageDownloader/Pods-ImageDownloader.debug.xcconfig"; sourceTree = "<group>"; };
+		2F0F2B7E3441788826DB0A1C /* Pods-ImageDownloader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageDownloader.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImageDownloader/Pods-ImageDownloader.release.xcconfig"; sourceTree = "<group>"; };
+		4C820651DD9077F109637B43 /* Pods_ImageDownloader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageDownloader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB99F5A21DA4148D00E82BB3 /* DownloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
 		EB99F5A41DA419BB00E82BB3 /* DownloadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTableViewCell.swift; sourceTree = "<group>"; };
 		EB99F5A51DA419BB00E82BB3 /* DownloadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadTableViewCell.xib; sourceTree = "<group>"; };
 		EB99F5A91DA41D4C00E82BB3 /* LHNetWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHNetWork.swift; sourceTree = "<group>"; };
+		EB99F5AB1DA4343E00E82BB3 /* LHManagerZip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHManagerZip.swift; sourceTree = "<group>"; };
 		EBBDB41D1DA4138400CFE064 /* ImageDownloader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageDownloader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBBDB4201DA4138400CFE064 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBBDB4251DA4138400CFE064 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,12 +41,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDD344B8A5E2CB09F99D5223 /* Pods_ImageDownloader.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		40B2CFFB46F2C6D4DF2F3CFF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C820651DD9077F109637B43 /* Pods_ImageDownloader.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF38D4E5962401B126BBC442 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				012D7267B5AD9D9BC6902EAC /* Pods-ImageDownloader.debug.xcconfig */,
+				2F0F2B7E3441788826DB0A1C /* Pods-ImageDownloader.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		EB99F5A81DA41B1100E82BB3 /* Screen1 */ = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +80,8 @@
 			children = (
 				EBBDB41F1DA4138400CFE064 /* ImageDownloader */,
 				EBBDB41E1DA4138400CFE064 /* Products */,
+				CF38D4E5962401B126BBC442 /* Pods */,
+				40B2CFFB46F2C6D4DF2F3CFF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,6 +103,7 @@
 				EBBDB4241DA4138400CFE064 /* Main.storyboard */,
 				EB99F5A81DA41B1100E82BB3 /* Screen1 */,
 				EB99F5A91DA41D4C00E82BB3 /* LHNetWork.swift */,
+				EB99F5AB1DA4343E00E82BB3 /* LHManagerZip.swift */,
 			);
 			path = ImageDownloader;
 			sourceTree = "<group>";
@@ -88,9 +115,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EBBDB42F1DA4138400CFE064 /* Build configuration list for PBXNativeTarget "ImageDownloader" */;
 			buildPhases = (
+				8C83F8942587D9DBB3F71AA3 /* [CP] Check Pods Manifest.lock */,
 				EBBDB4191DA4138400CFE064 /* Sources */,
 				EBBDB41A1DA4138400CFE064 /* Frameworks */,
 				EBBDB41B1DA4138400CFE064 /* Resources */,
+				0C7FE8676BFC96D69C613B4A /* [CP] Embed Pods Frameworks */,
+				CEB9B738FA90DD3880A035E8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -150,6 +180,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0C7FE8676BFC96D69C613B4A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ImageDownloader/Pods-ImageDownloader-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C83F8942587D9DBB3F71AA3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CEB9B738FA90DD3880A035E8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ImageDownloader/Pods-ImageDownloader-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EBBDB4191DA4138400CFE064 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -159,6 +237,7 @@
 				EB99F5A31DA4148D00E82BB3 /* DownloadViewController.swift in Sources */,
 				EBBDB4211DA4138400CFE064 /* AppDelegate.swift in Sources */,
 				EB99F5A61DA419BB00E82BB3 /* DownloadTableViewCell.swift in Sources */,
+				EB99F5AC1DA4343E00E82BB3 /* LHManagerZip.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +358,7 @@
 		};
 		EBBDB4301DA4138400CFE064 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 012D7267B5AD9D9BC6902EAC /* Pods-ImageDownloader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LR8XGHFLF8;
@@ -294,6 +374,7 @@
 		};
 		EBBDB4311DA4138400CFE064 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F0F2B7E3441788826DB0A1C /* Pods-ImageDownloader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LR8XGHFLF8;
