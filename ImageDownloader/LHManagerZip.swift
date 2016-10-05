@@ -17,26 +17,40 @@ protocol LHManagerZipDelegate: class {
 }
 
 /*
- This struct use for unzip file
+ This class use for unzip file
  */
 class LHManagerZip: NSObject {
     //MARK: Property
     weak var delegate: LHManagerZipDelegate?
     
     //MARK: Function
-    
+
     required init(_ delegate:LHManagerZipDelegate) {
         self.delegate = delegate
     }
     
     func upZipFile() {
-        let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let contentPath = try! FileManager.default.contentsOfDirectory(at: documentPath, includingPropertiesForKeys: nil, options: [])
-        let zipFile = contentPath.filter{
-            $0.pathExtension == "zip"
-        }
-        _ = try! Zip.quickUnzipFile(zipFile.first!)
+        let zipFilePath = URL.findFileWithExtendsionAtPath(URL.getDocumentPath(), "zip").first!
+        _ = try! Zip.quickUnzipFile(zipFilePath)
         delegate?.unZipFileDidFinish()
-        print("Unzip Xong roi nhe")
     }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

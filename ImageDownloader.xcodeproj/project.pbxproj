@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CDD344B8A5E2CB09F99D5223 /* Pods_ImageDownloader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C820651DD9077F109637B43 /* Pods_ImageDownloader.framework */; };
+		EB17D5841DA4B18E00109D28 /* URL+LH.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB17D5831DA4B18E00109D28 /* URL+LH.swift */; };
+		EB17D5861DA4B6D700109D28 /* FileRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB17D5851DA4B6D700109D28 /* FileRecord.swift */; };
 		EB99F5A31DA4148D00E82BB3 /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99F5A21DA4148D00E82BB3 /* DownloadViewController.swift */; };
 		EB99F5A61DA419BB00E82BB3 /* DownloadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99F5A41DA419BB00E82BB3 /* DownloadTableViewCell.swift */; };
 		EB99F5A71DA419BB00E82BB3 /* DownloadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB99F5A51DA419BB00E82BB3 /* DownloadTableViewCell.xib */; };
@@ -23,6 +25,8 @@
 		012D7267B5AD9D9BC6902EAC /* Pods-ImageDownloader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageDownloader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImageDownloader/Pods-ImageDownloader.debug.xcconfig"; sourceTree = "<group>"; };
 		2F0F2B7E3441788826DB0A1C /* Pods-ImageDownloader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageDownloader.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImageDownloader/Pods-ImageDownloader.release.xcconfig"; sourceTree = "<group>"; };
 		4C820651DD9077F109637B43 /* Pods_ImageDownloader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageDownloader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB17D5831DA4B18E00109D28 /* URL+LH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+LH.swift"; sourceTree = "<group>"; };
+		EB17D5851DA4B6D700109D28 /* FileRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileRecord.swift; sourceTree = "<group>"; };
 		EB99F5A21DA4148D00E82BB3 /* DownloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
 		EB99F5A41DA419BB00E82BB3 /* DownloadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTableViewCell.swift; sourceTree = "<group>"; };
 		EB99F5A51DA419BB00E82BB3 /* DownloadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadTableViewCell.xib; sourceTree = "<group>"; };
@@ -104,6 +108,8 @@
 				EB99F5A81DA41B1100E82BB3 /* Screen1 */,
 				EB99F5A91DA41D4C00E82BB3 /* LHNetWork.swift */,
 				EB99F5AB1DA4343E00E82BB3 /* LHManagerZip.swift */,
+				EB17D5831DA4B18E00109D28 /* URL+LH.swift */,
+				EB17D5851DA4B6D700109D28 /* FileRecord.swift */,
 			);
 			path = ImageDownloader;
 			sourceTree = "<group>";
@@ -233,7 +239,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB17D5861DA4B6D700109D28 /* FileRecord.swift in Sources */,
 				EB99F5AA1DA41D4C00E82BB3 /* LHNetWork.swift in Sources */,
+				EB17D5841DA4B18E00109D28 /* URL+LH.swift in Sources */,
 				EB99F5A31DA4148D00E82BB3 /* DownloadViewController.swift in Sources */,
 				EBBDB4211DA4138400CFE064 /* AppDelegate.swift in Sources */,
 				EB99F5A61DA419BB00E82BB3 /* DownloadTableViewCell.swift in Sources */,

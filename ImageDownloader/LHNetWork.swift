@@ -32,7 +32,7 @@ class LHNetWork: NSObject {
     }
     
     //func: Download
-    func downloadDropBox(){
+    func downloadDropBox() {
         let config = URLSessionConfiguration.background(withIdentifier: "something")
         let session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
         let task = session.downloadTask(with: url!)

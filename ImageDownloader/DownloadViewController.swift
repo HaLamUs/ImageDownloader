@@ -25,7 +25,12 @@ class DownloadViewController: UIViewController {
     @IBOutlet weak var addButton: UIBarButtonItem!
     
     //Mark: Varible
-    var countAdd = 0
+    var countAdd = 2
+    var fileRecords:[FileRecord] = [FileRecord]() {
+        didSet {
+            downLoadTableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +49,7 @@ class DownloadViewController: UIViewController {
             countAdd += 1
             print()
         case 2:
+            self.getListFileRecord()
             countAdd += 1
             print()
         default:
@@ -53,27 +59,36 @@ class DownloadViewController: UIViewController {
 }
 
 extension DownloadViewController {
-    func downLoadFiles(){
+    func downLoadFiles() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let urlDropBox = "https://dl.dropboxusercontent.com/u/4529715/JSON%20files.zip"
         let nwCall = LHNetWork(urlDropBox,self)
         nwCall.downloadDropBox()
     }
     
-    func upZipFile(){
+    func upZipFile() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let lhManagerZip = LHManagerZip(self)
         lhManagerZip.upZipFile()
+    }
+    
+    func getListFileRecord() {
+         let zipFilePath = URL.findFileWithExtendsionAtPath(URL.getDocumentPath(), "zip").first!
+        let fileName = URL.getFileName(zipFilePath)
+        let pathJson = URL.getDocumentPath().appendingPathComponent(fileName + "/\(fileName)")
+        let jsonFilesPath = URL.findFileWithExtendsionAtPath(pathJson, "json")
+        fileRecords = FileRecord().parseJson(jsonFilesPath)
     }
 }
 
 extension DownloadViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.fileRecords.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = downLoadTableView.dequeueReusableCell(withIdentifier: "DownloadTableViewCell", for: indexPath) as! DownloadTableViewCell
+        cell.configCell(fileRecords[indexPath.row])
         return cell
     }
 }
@@ -87,8 +102,10 @@ extension DownloadViewController: LHDownloadDelegate,LHManagerZipDelegate {
     }
     
     func unZipFileDidFinish() {
+        DispatchQueue.main.async {
+            self.addButton.isEnabled = true
+        }
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
-        print()
     }
 
 }

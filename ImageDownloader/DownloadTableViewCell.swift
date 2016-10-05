@@ -12,7 +12,12 @@ class DownloadTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.textLabel?.text = "lamha"
-        self.detailTextLabel?.text = "Good job"
+//        self.textLabel?.text = "lamha"
+//        self.detailTextLabel?.text = "Good job"
     }
+    
+    func configCell(_ file: FileRecord) {
+        self.textLabel?.text = file.fileName
+    }
+    
 }
