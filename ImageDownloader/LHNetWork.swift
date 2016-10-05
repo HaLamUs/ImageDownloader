@@ -11,7 +11,7 @@ import Foundation
 /*
  This protocol to infor download zip file finshed
  */
-protocol LHDownloadDelegate:class {
+protocol LHDownloadDelegate: class {
     func downLoadDidFinish()
 }
 
@@ -21,8 +21,8 @@ protocol LHDownloadDelegate:class {
 class LHNetWork: NSObject {
     
     //MARK: Property
-    var url:URL?
-    weak var delegate: LHDownloadDelegate?
+    fileprivate var url:URL?
+    fileprivate weak var delegate: LHDownloadDelegate?
     
     //func: Init
     required init(_ url:String, _ delegate: LHDownloadDelegate) {
@@ -32,7 +32,7 @@ class LHNetWork: NSObject {
     }
     
     //func: Download
-    func downloadDropBox() {
+    func downloadFile() {
         let config = URLSessionConfiguration.background(withIdentifier: "something")
         let session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
         let task = session.downloadTask(with: url!)

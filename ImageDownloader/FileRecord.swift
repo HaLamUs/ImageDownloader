@@ -9,39 +9,99 @@
 import Foundation
 
 /*
- This struct for FileRecord model
+ This protocol for reloadData
  */
 
-struct FileRecord {
-    var fileName: String
-    var files: [String]
+protocol FileRecordDelegate: class {
+    func reloadData(_ index: IndexPath)
+}
+
+/*
+ This enum for state of FileRecord
+ */
+
+enum FileState: String {
+    case Queueing
+    case Unzipping
+    case Downloading
+    case Finished
+}
+
+/*
+ This class for FileRecord model
+ */
+
+class FileRecord {
     
+    //MARK: varible
+    private(set) var fileName: String
+    private(set) var fileState: String
+        {
+        didSet {
+            delegate?.reloadData(index!)
+        }
+    }
+    private(set) var files: [String]
+    private(set) var fileUrl: URL?
+    weak var delegate: FileRecordDelegate?
+    private(set) var index: IndexPath?
+    
+    //MARK: function
     //init
     init() {
-        files = [String]()
-        fileName = ""
+        self.files = [String]()
+        self.fileName = ""
+        self.fileState = FileState.Queueing.rawValue + "..."
     }
     
     //get json file
     func parseJson(_ urlPaths: [URL]) -> [FileRecord] {
         var records = [FileRecord]()
-        var file = FileRecord()
+        let file = FileRecord()
         for path in urlPaths {
             file.fileName = URL.getFileName(path)
-            file.files = parseDataInJsonFile(path)
+            file.fileUrl = path
             records.append(file)
         }
         return records
     }
     
     //parse data in json file
-    func parseDataInJsonFile(_ url: URL) -> [String] {
-        guard let jsonData = try? Data(contentsOf: url, options: .mappedIfSafe) else {
-            return [""]
+    func parseDataInJsonFile(_ index: IndexPath) {
+        self.index = index
+        self.fileState = FileState.Queueing.rawValue + "..."
+        guard let jsonData = try? Data(contentsOf: fileUrl!, options: .mappedIfSafe) else {
+            return
         }
         guard let jsonResult = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) else {
-            return [""]
+            return
         }
-        return jsonResult as! [String]
+        self.files = jsonResult as! [String]
+    }
+    
+    func downLoadFiles() {
+        for path in self.files{
+            let nwCall = LHNetWork(path, self)
+            nwCall.downloadFile()
+        }
     }
 }
+
+extension FileRecord: LHDownloadDelegate {
+    func downLoadDidFinish() {
+        print()//cai nay hit 99 lan ha
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

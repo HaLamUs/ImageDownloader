@@ -32,6 +32,9 @@ class DownloadViewController: UIViewController {
         }
     }
     
+    //Mark: Constaint
+    let urlDropBox = "https://dl.dropboxusercontent.com/u/4529715/JSON%20files.zip"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -42,7 +45,7 @@ class DownloadViewController: UIViewController {
         addButton.isEnabled = false
         switch countAdd {
         case 0:
-            self.downLoadFiles()
+            self.downLoadFileDropbox()
             countAdd += 1
         case 1:
             self.upZipFile()
@@ -59,11 +62,10 @@ class DownloadViewController: UIViewController {
 }
 
 extension DownloadViewController {
-    func downLoadFiles() {
+    func downLoadFileDropbox() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        let urlDropBox = "https://dl.dropboxusercontent.com/u/4529715/JSON%20files.zip"
-        let nwCall = LHNetWork(urlDropBox,self)
-        nwCall.downloadDropBox()
+        let nwCall = LHNetWork(self.urlDropBox,self)
+        nwCall.downloadFile()
     }
     
     func upZipFile() {
@@ -78,6 +80,7 @@ extension DownloadViewController {
         let pathJson = URL.getDocumentPath().appendingPathComponent(fileName + "/\(fileName)")
         let jsonFilesPath = URL.findFileWithExtendsionAtPath(pathJson, "json")
         fileRecords = FileRecord().parseJson(jsonFilesPath)
+//        fileRecords = [FileRecord().parseJson(jsonFilesPath).first!]
     }
 }
 
@@ -88,12 +91,17 @@ extension DownloadViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = downLoadTableView.dequeueReusableCell(withIdentifier: "DownloadTableViewCell", for: indexPath) as! DownloadTableViewCell
-        cell.configCell(fileRecords[indexPath.row])
+        let file = fileRecords[indexPath.row]
+        cell.configCell(file)
+        file.delegate = self
+        if file.files.count <= 0 {
+            file.parseDataInJsonFile(indexPath)
+        }
         return cell
     }
 }
 
-extension DownloadViewController: LHDownloadDelegate,LHManagerZipDelegate {
+extension DownloadViewController: LHDownloadDelegate,LHManagerZipDelegate, FileRecordDelegate {
     func downLoadDidFinish() {
         DispatchQueue.main.async {
             self.addButton.isEnabled = true
@@ -106,6 +114,12 @@ extension DownloadViewController: LHDownloadDelegate,LHManagerZipDelegate {
             self.addButton.isEnabled = true
         }
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+    
+    func reloadData(_ index: IndexPath) {
+        DispatchQueue.main.async {
+             self.downLoadTableView.reloadRows(at: [index], with: .fade)
+        }
     }
 
 }

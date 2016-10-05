@@ -12,20 +12,20 @@ import Zip
 /*
  This protocol for unzip file finish
  */
-protocol LHManagerZipDelegate: class {
+protocol LHManagerZipDelegate {
     func unZipFileDidFinish()
 }
 
 /*
- This class use for unzip file
+ This struct use for unzip file
  */
-class LHManagerZip: NSObject {
+struct LHManagerZip {
     //MARK: Property
-    weak var delegate: LHManagerZipDelegate?
+    var delegate: LHManagerZipDelegate?
     
     //MARK: Function
 
-    required init(_ delegate:LHManagerZipDelegate) {
+    init(_ delegate:LHManagerZipDelegate) {
         self.delegate = delegate
     }
     
@@ -36,6 +36,7 @@ class LHManagerZip: NSObject {
     }
     
 }
+
 
 
 
