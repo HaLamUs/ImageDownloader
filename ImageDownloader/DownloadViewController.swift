@@ -25,7 +25,7 @@ class DownloadViewController: UIViewController {
     @IBOutlet weak var addButton: UIBarButtonItem!
     
     //Mark: Varible
-    var countAdd = 2
+    var countAdd = 0
     var fileRecords:[FileRecord] = [FileRecord]() {
         didSet {
             downLoadTableView.reloadData()
@@ -50,11 +50,9 @@ class DownloadViewController: UIViewController {
         case 1:
             self.upZipFile()
             countAdd += 1
-            print()
         case 2:
             self.getListFileRecord()
             countAdd += 1
-            print()
         default:
             print()
         }
@@ -75,12 +73,11 @@ extension DownloadViewController {
     }
     
     func getListFileRecord() {
-         let zipFilePath = URL.findFileWithExtendsionAtPath(URL.getDocumentPath(), "zip").first!
+        let zipFilePath = URL.findFileWithExtendsionAtPath(URL.getDocumentPath(), "zip").first!
         let fileName = URL.getFileName(zipFilePath)
         let pathJson = URL.getDocumentPath().appendingPathComponent(fileName + "/\(fileName)")
         let jsonFilesPath = URL.findFileWithExtendsionAtPath(pathJson, "json")
         fileRecords = FileRecord().parseJson(jsonFilesPath)
-//        fileRecords = [FileRecord().parseJson(jsonFilesPath).first!]
     }
 }
 
@@ -97,16 +94,23 @@ extension DownloadViewController: UITableViewDataSource, UITableViewDelegate {
         if file.files.count <= 0 {
             file.parseDataInJsonFile(indexPath)
         }
+        if file.files.count > 0 && file.activeDownload.count <= 0 {
+            file.downLoadFiles()
+        }
         return cell
     }
 }
 
 extension DownloadViewController: LHDownloadDelegate,LHManagerZipDelegate, FileRecordDelegate {
-    func downLoadDidFinish() {
+    func downLoadDidFinishSuccess() {
         DispatchQueue.main.async {
             self.addButton.isEnabled = true
         }
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+    
+    func downLoadError() {
+        print()
     }
     
     func unZipFileDidFinish() {

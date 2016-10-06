@@ -12,7 +12,8 @@ import Foundation
  This protocol to infor download zip file finshed
  */
 protocol LHDownloadDelegate: class {
-    func downLoadDidFinish()
+    func downLoadDidFinishSuccess()
+    func downLoadError()
 }
 
 /*
@@ -33,7 +34,7 @@ class LHNetWork: NSObject {
     
     //func: Download
     func downloadFile() {
-        let config = URLSessionConfiguration.background(withIdentifier: "something")
+        let config = URLSessionConfiguration.background(withIdentifier: url!.absoluteString)
         let session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
         let task = session.downloadTask(with: url!)
         task.resume()
@@ -46,7 +47,14 @@ extension LHNetWork: URLSessionDownloadDelegate {
         let destUrl = localUrl?.appendingPathComponent(url!.lastPathComponent)
         let dataFromUrl = try! Data(contentsOf: location)
         _ = try! dataFromUrl.write(to: destUrl!)
-        self.delegate?.downLoadDidFinish()
+        self.delegate?.downLoadDidFinishSuccess()
+    }
+    
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        guard error == nil else {
+            self.delegate?.downLoadError()
+            return
+        }
     }
 }
 

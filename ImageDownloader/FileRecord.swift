@@ -25,6 +25,7 @@ enum FileState: String {
     case Unzipping
     case Downloading
     case Finished
+    case Error
 }
 
 /*
@@ -35,8 +36,7 @@ class FileRecord {
     
     //MARK: varible
     private(set) var fileName: String
-    private(set) var fileState: String
-        {
+    private(set) var fileState: String {
         didSet {
             delegate?.reloadData(index!)
         }
@@ -45,9 +45,11 @@ class FileRecord {
     private(set) var fileUrl: URL?
     weak var delegate: FileRecordDelegate?
     private(set) var index: IndexPath?
+    private(set) var activeDownload = [String:LHNetWork]()
+    fileprivate var countDown = 0
     
     //MARK: function
-    //init
+    
     init() {
         self.files = [String]()
         self.fileName = ""
@@ -57,8 +59,8 @@ class FileRecord {
     //get json file
     func parseJson(_ urlPaths: [URL]) -> [FileRecord] {
         var records = [FileRecord]()
-        let file = FileRecord()
         for path in urlPaths {
+            let file = FileRecord()
             file.fileName = URL.getFileName(path)
             file.fileUrl = path
             records.append(file)
@@ -69,27 +71,49 @@ class FileRecord {
     //parse data in json file
     func parseDataInJsonFile(_ index: IndexPath) {
         self.index = index
-        self.fileState = FileState.Queueing.rawValue + "..."
-        guard let jsonData = try? Data(contentsOf: fileUrl!, options: .mappedIfSafe) else {
+        self.fileState = FileState.Unzipping.rawValue + "..."
+        guard let jsonData = try? Data(contentsOf: self.fileUrl!, options: .mappedIfSafe) else {
             return
         }
         guard let jsonResult = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) else {
             return
         }
-        self.files = jsonResult as! [String]
+        //remove duplicate value in array
+        var arrayOfFiles = jsonResult as! [String]
+        let setOfFiles = Set(arrayOfFiles)
+        arrayOfFiles = Array(setOfFiles)
+        self.files = arrayOfFiles
     }
     
     func downLoadFiles() {
-        for path in self.files{
+        //note: IndexPath
+        self.fileState = FileState.Downloading.rawValue + "..."
+        for path in self.files {
             let nwCall = LHNetWork(path, self)
             nwCall.downloadFile()
+            self.activeDownload[path] = nwCall
         }
+    }
+    
+    fileprivate func setFileStateFinish(_ isError: Bool = false){
+        self.fileState = isError ? FileState.Error.rawValue : FileState.Finished.rawValue
     }
 }
 
 extension FileRecord: LHDownloadDelegate {
-    func downLoadDidFinish() {
-        print()//cai nay hit 99 lan ha
+    func downLoadDidFinishSuccess() {
+        self.countDown += 1
+        if self.countDown >= self.activeDownload.count {
+            self.setFileStateFinish()
+        }
+        print("===> At \(self.fileName) + Number of File: \(self.countDown) + Total: \(self.activeDownload.count) \n")
+    }
+    
+    func downLoadError() {
+        self.countDown += 1
+        if self.countDown >= self.activeDownload.count {
+            self.setFileStateFinish(true)
+        }
     }
 }
 
