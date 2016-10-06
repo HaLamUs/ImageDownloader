@@ -2,10 +2,10 @@
 Simple
 
 # Require
-  Swift 3
-  Xcode 8
-  Cocoa pods 1.1.0.rc.2
-  ios 10.0.2
+  - Swift 3
+  - Xcode 8
+  - Cocoa pods 1.1.0.rc.2
+  - ios 10.0.2
 
 # How to use
 Version 1.0
