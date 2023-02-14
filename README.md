@@ -1,13 +1,13 @@
 # ImageDownloader
 Simple
 
-# Require
+## Require
   - Swift 3
   - Xcode 8
   - Cocoa pods 1.1.0.rc.2
   - ios 10.0.2
 
-# How to use
+## How to use
 Version 1.0
 
 Tap Add button
@@ -26,7 +26,9 @@ Tap Add button
   
   - NSProgress: expired
  
- Write by:
- LamHa
+## Author
+
+This repo was developed by [@lamha](https://github.com/HaLamUs). 
+Follow or connect with me on [my LinkedIn](https://www.linkedin.com/in/lamhacs). 
  
 
